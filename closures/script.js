@@ -25,6 +25,15 @@ function cacheFunction(cb) {
   //if you invoke it again with 5, it should return 25 (previously cached)
   //Tips, use an object where each property is an argument, and the value is the result.
   //use hasOwnProperty!
+
+  let cache = {};
+  return function (arg) {
+    if (cache.hasOwnProperty(arg)) {
+      return cache[arg];
+    }
+    cache[arg] = cb(arg);
+    return cache[arg];
+  };
 }
 
 // Bind
