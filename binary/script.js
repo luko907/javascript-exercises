@@ -12,4 +12,11 @@ function BinaryToDecimal(num) {
   return decimal;
 }
 
-function DecimalToBinary(num) {}
+function DecimalToBinary(num) {
+  let array = [];
+  while (num > 0) {
+    array.unshift(num % 2);
+    num = Math.floor(num / 2);
+  }
+  return array.join("");
+}
