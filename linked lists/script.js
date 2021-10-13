@@ -15,7 +15,7 @@ function LinkedList() {
   this.head = null;
 }
 
-function Node(value) {
+function Node(val) {
   this.value = val;
   this.next = null;
 }
@@ -33,6 +33,35 @@ LinkedList.prototype.add = function (val) {
   current.next = node;
   this._length++;
   return node;
+};
+LinkedList.prototype.remove = function () {
+  var current = this.head;
+  var size = this._length;
+  var count = 0;
+
+  if (!current) {
+    return null;
+  }
+  while (current) {
+    if (size === 0) {
+      var del = current.value;
+      this.head = null;
+      return del;
+    }
+    if (count === size - 1) {
+      var del = current.next.value;
+      current.next = null;
+      this._length = this._length - 1;
+      return del;
+    }
+    if (size === 1 && !current) {
+      var del = current.next.value;
+      this.head = null;
+      return del;
+    }
+    current = current.next;
+    count = count + 1;
+  }
 };
 //Hash Table (see information at: https: es.wikipedia.org/wiki/Tabla_hash)
 //A hash table contains an array of "containers" or buckets where you can store information.
