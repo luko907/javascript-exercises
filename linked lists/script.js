@@ -10,10 +10,30 @@
 //remove (): Head -> null and returns 1
 //search: Search for a value within the list. It can receive a value or a function. If there are no results, it returns null.
 
-function LinkedList() {}
+function LinkedList() {
+  this._length = 0;
+  this.head = null;
+}
 
-function Node(value) {}
+function Node(value) {
+  this.value = val;
+  this.next = null;
+}
 
+LinkedList.prototype.add = function (val) {
+  var current = this.head;
+  var node = new Node(val);
+  if (!current) {
+    this.head = node;
+    return node;
+  }
+  while (current.next) {
+    current = current.next;
+  }
+  current.next = node;
+  this._length++;
+  return node;
+};
 //Hash Table (see information at: https: es.wikipedia.org/wiki/Tabla_hash)
 //A hash table contains an array of "containers" or buckets where you can store information.
 //For this exercise, generate 35 buckets for the Hash Table, and perform the methods, get, hasKey
