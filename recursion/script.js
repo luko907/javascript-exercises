@@ -10,6 +10,9 @@ function nFibonacci(n) {
   // Returns the nth number of the series
   // nFibonacci(0) // 0  // element 0 is 0
   // nFibonacci(1) // 1 // element 1 is 1
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  return nFibonacci(n - 1) + nFibonacci(n - 2);
 }
 
 //enqueue: Add a value to the queue. Respect the existing order.
