@@ -19,4 +19,15 @@ function nFibonacci(n) {
 //dequeue: Removes a value from the queue. It obeys FIFO and respects the underflow (it returns undefined when the queue has size zero, that is, when it has no element).
 //size: Returns the number of elements that the queue contains.
 
-function Queue() {}
+function Queue() {
+  this.array = [];
+}
+Queue.prototype.enqueue = function (value) {
+  this.array.push(value);
+};
+Queue.prototype.dequeue = function () {
+  return this.array.shift();
+};
+Queue.prototype.size = function () {
+  return this.array.length;
+};
