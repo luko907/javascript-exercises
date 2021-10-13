@@ -52,9 +52,8 @@ function getName() {
   return this.name;
 }
 
-let getNameCarBrand = "";
-let getNameModel = "";
-
+let getNameCarBrand = getNombre.bind(carBrand);
+let getNameModel = getNombre.bind(model);
 /* Save in the next three variables a function that returns a string using the "createString" function
 and the specified delimiter. The idea is to do it with the bind function to be able to use it again multiple times later:
 
@@ -68,8 +67,8 @@ function createString(left, right, string) {
   return left + string + right;
 }
 
-let textAsterisk = "";
+let textAsterisk = createString.bind(this, "*", "*");
 
-let textScript = "";
+let textScript = createString.bind(this, "-", "-");
 
-let textUnderscore = "";
+let textUnderscore = createString.bind(this, "_", "_");
