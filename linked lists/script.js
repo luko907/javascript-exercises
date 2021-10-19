@@ -63,6 +63,27 @@ LinkedList.prototype.remove = function () {
     count = count + 1;
   }
 };
+LinkedList.prototype.search = function (argumento) {
+  var current = this.head;
+  //entrar en el nodo
+  if (!current) {
+    return null;
+  }
+  while (current) {
+    if (typeof argumento === "function") {
+      if (argumento(current.value)) {
+        return current.value;
+      }
+    } else {
+      if (current.value === argumento) {
+        return argumento;
+      }
+    }
+
+    current = current.next;
+  }
+  return null;
+};
 //Hash Table (see information at: https: es.wikipedia.org/wiki/Tabla_hash)
 //A hash table contains an array of "containers" or buckets where you can store information.
 //For this exercise, generate 35 buckets for the Hash Table, and perform the methods, get, hasKey
