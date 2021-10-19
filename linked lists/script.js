@@ -96,4 +96,16 @@ LinkedList.prototype.search = function (argumento) {
 // - Use the number obtained, to search (by calling the get method) the container or bucket where the value is.
 //- Return said value.
 
-function HashTable() {}
+function HashTable() {
+  this.numBuckets = 35;
+  this.buckets = [];
+}
+
+HashTable.prototype.hash = function (value) {
+  var resultado = 0;
+
+  for (let i = 0; i < value.length; i++) {
+    resultado += value.charCodeAt(i);
+  }
+  return (resultado = resultado % this.numBuckets);
+};
