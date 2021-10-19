@@ -63,20 +63,20 @@ LinkedList.prototype.remove = function () {
     count = count + 1;
   }
 };
-LinkedList.prototype.search = function (argumento) {
+LinkedList.prototype.search = function (arg) {
   var current = this.head;
   //entrar en el nodo
   if (!current) {
     return null;
   }
   while (current) {
-    if (typeof argumento === "function") {
-      if (argumento(current.value)) {
+    if (typeof arg === "function") {
+      if (arg(current.value)) {
         return current.value;
       }
     } else {
-      if (current.value === argumento) {
-        return argumento;
+      if (current.value === arg) {
+        return arg;
       }
     }
 
@@ -102,20 +102,18 @@ function HashTable() {
 }
 
 HashTable.prototype.hash = function (value) {
-  var resultado = 0;
+  var result = 0;
 
   for (let i = 0; i < value.length; i++) {
-    resultado += value.charCodeAt(i);
+    result += value.charCodeAt(i);
   }
-  return (resultado = resultado % this.numBuckets);
+  return (result = result % this.numBuckets);
 };
 HashTable.prototype.set = function (key1, value1) {
   if (typeof key1 !== "string") throw new TypeError("Keys must be strings");
-  var resultado = this.hash(key1);
-  if (!this.buckets[resultado]) {
-    this.buckets[resultado] = {};
+  var result = this.hash(key1);
+  if (!this.buckets[result]) {
+    this.buckets[result] = {};
   }
-  // si esta repetido el has del key entonces lo que hace es no crear otro objeto si no que lo va a poner al lado del que ya se habia creado
-  //[{key1:value1,key2:value2}]
-  this.buckets[resultado][key1] = value1;
+  this.buckets[result][key1] = value1;
 };
