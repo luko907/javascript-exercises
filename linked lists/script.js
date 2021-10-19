@@ -109,3 +109,13 @@ HashTable.prototype.hash = function (value) {
   }
   return (resultado = resultado % this.numBuckets);
 };
+HashTable.prototype.set = function (key1, value1) {
+  if (typeof key1 !== "string") throw new TypeError("Keys must be strings");
+  var resultado = this.hash(key1);
+  if (!this.buckets[resultado]) {
+    this.buckets[resultado] = {};
+  }
+  // si esta repetido el has del key entonces lo que hace es no crear otro objeto si no que lo va a poner al lado del que ya se habia creado
+  //[{key1:value1,key2:value2}]
+  this.buckets[resultado][key1] = value1;
+};
