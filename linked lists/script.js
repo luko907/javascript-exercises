@@ -117,3 +117,15 @@ HashTable.prototype.set = function (key1, value1) {
   }
   this.buckets[result][key1] = value1;
 };
+HashTable.prototype.get = function (key1) {
+  var result = this.hash(key1);
+  return this.buckets[result][key1];
+};
+HashTable.prototype.hasKey = function (key1) {
+  var result = this.hash(key1);
+  if (this.buckets[result][key1]) {
+    return true;
+  } else {
+    return false;
+  }
+};
